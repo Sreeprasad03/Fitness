@@ -212,18 +212,28 @@ ul { list-style: none; }
 .nav-toggle {
   display: none;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 5px;
   cursor: pointer;
-  padding: 0.5rem;
+  /* Large tap target — minimum 48x48px for mobile */
+  width: 48px;
+  height: 48px;
+  padding: 0;
   background: none;
   border: none;
+  position: relative;
+  z-index: 1100;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 .nav-toggle span {
   display: block;
-  width: 24px; height: 2px;
+  width: 26px; height: 2px;
   background: var(--white);
-  transition: all 0.3s;
+  transition: all 0.3s ease;
+  pointer-events: none;
 }
 
 .nav-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
@@ -1276,11 +1286,16 @@ select.form-control option { background: var(--dark); }
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
   background: rgba(10,10,10,0.98);
-  z-index: 999;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 1050;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 1rem;
+  /* Safe area for notched phones */
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 .mobile-nav.open { display: flex; }
@@ -1292,9 +1307,13 @@ select.form-control option { background: var(--dark); }
   text-transform: uppercase;
   letter-spacing: 0.05em;
   transition: color 0.2s;
+  /* Large tap targets */
+  padding: 0.3rem 1rem;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.mobile-nav a:hover { color: var(--accent); }
+.mobile-nav a:hover,
+.mobile-nav a:active { color: var(--accent); }
 
 /* ============================================
    RESPONSIVE BREAKPOINTS

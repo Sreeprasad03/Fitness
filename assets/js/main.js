@@ -1,6 +1,19 @@
 /* ============================================
-   IRONCLAD GYM - Main JavaScript
+   BYSCORE FITNESS — Main JavaScript
 ============================================ */
+
+// ========== --vh fix for iOS Safari ==========
+function setVh() {
+  document.documentElement.style.setProperty('--vh', window.innerHeight * 0.01 + 'px');
+}
+setVh();
+window.addEventListener('orientationchange', () => setTimeout(setVh, 300));
+window.addEventListener('resize', setVh);
+
+// ========== Touch device detection ==========
+if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+  document.documentElement.classList.add('is-touch');
+}
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -9,26 +22,50 @@ document.addEventListener('DOMContentLoaded', () => {
   if (navbar) {
     window.addEventListener('scroll', () => {
       navbar.classList.toggle('scrolled', window.scrollY > 50);
-    });
+    }, { passive: true });
   }
 
   // ========== Mobile Navigation ==========
   const navToggle = document.getElementById('navToggle');
   const mobileNav = document.getElementById('mobileNav');
 
+  function openMobileNav() {
+    navToggle.classList.add('open');
+    mobileNav.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMobileNav() {
+    navToggle.classList.remove('open');
+    mobileNav.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
   if (navToggle && mobileNav) {
-    navToggle.addEventListener('click', () => {
-      navToggle.classList.toggle('open');
-      mobileNav.classList.toggle('open');
-      document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
+    navToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      mobileNav.classList.contains('open') ? closeMobileNav() : openMobileNav();
     });
 
     mobileNav.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navToggle.classList.remove('open');
-        mobileNav.classList.remove('open');
-        document.body.style.overflow = '';
-      });
+      link.addEventListener('click', closeMobileNav);
+    });
+
+    mobileNav.addEventListener('click', (e) => {
+      if (e.target === mobileNav) closeMobileNav();
+    });
+
+    // Swipe left to close
+    let swipeStartX = 0;
+    mobileNav.addEventListener('touchstart', (e) => {
+      swipeStartX = e.touches[0].clientX;
+    }, { passive: true });
+    mobileNav.addEventListener('touchend', (e) => {
+      if (swipeStartX - e.changedTouches[0].clientX > 60) closeMobileNav();
+    }, { passive: true });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeMobileNav();
     });
   }
 
@@ -44,61 +81,55 @@ document.addEventListener('DOMContentLoaded', () => {
   // ========== Scroll Reveal ==========
   const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        const el = entry.target;
-        const delay = el.dataset.delay || 0;
-        setTimeout(() => {
-          el.classList.add('visible');
-        }, delay);
-        observer.unobserve(el);
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-  revealElements.forEach(el => observer.observe(el));
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const delay = parseInt(el.dataset.delay) || 0;
+          setTimeout(() => el.classList.add('visible'), delay);
+          observer.unobserve(el);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    revealElements.forEach(el => observer.observe(el));
+  } else {
+    revealElements.forEach(el => el.classList.add('visible'));
+  }
 
   // ========== Stagger Reveals ==========
   document.querySelectorAll('[data-stagger]').forEach(container => {
-    const children = container.querySelectorAll('.reveal, .reveal-left, .reveal-right');
-    children.forEach((child, i) => {
+    container.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach((child, i) => {
       child.dataset.delay = i * 100;
     });
   });
 
   // ========== Counter Animation ==========
   const counters = document.querySelectorAll('.stat-num[data-count]');
-
-  const countObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const el = entry.target;
-        const target = parseInt(el.dataset.count);
-        const suffix = el.dataset.suffix || '';
-        const duration = 1500;
-        const step = target / (duration / 16);
-        let current = 0;
-
-        const timer = setInterval(() => {
-          current = Math.min(current + step, target);
-          el.textContent = Math.floor(current) + suffix;
-          if (current >= target) clearInterval(timer);
-        }, 16);
-
-        countObserver.unobserve(el);
-      }
-    });
-  }, { threshold: 0.5 });
-
-  counters.forEach(el => countObserver.observe(el));
+  if ('IntersectionObserver' in window && counters.length) {
+    const countObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.dataset.count);
+          const suffix = el.dataset.suffix || '';
+          const step = target / (1500 / 16);
+          let current = 0;
+          const timer = setInterval(() => {
+            current = Math.min(current + step, target);
+            el.textContent = Math.floor(current) + suffix;
+            if (current >= target) clearInterval(timer);
+          }, 16);
+          countObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(el => countObserver.observe(el));
+  }
 
   // ========== Ticker Duplication ==========
   const tickerTrack = document.querySelector('.ticker-track');
-  if (tickerTrack) {
-    const clone = tickerTrack.innerHTML;
-    tickerTrack.innerHTML += clone;
-  }
+  if (tickerTrack) tickerTrack.innerHTML += tickerTrack.innerHTML;
 
   // ========== Contact Form ==========
   const contactForm = document.getElementById('contactForm');
@@ -107,18 +138,15 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const btn = contactForm.querySelector('[type="submit"]');
       const successMsg = document.getElementById('formSuccess');
-
+      const originalText = btn.textContent;
       btn.textContent = 'Sending...';
       btn.disabled = true;
-
       setTimeout(() => {
         btn.textContent = 'Message Sent ✓';
-        if (successMsg) {
-          successMsg.style.display = 'block';
-        }
+        if (successMsg) successMsg.style.display = 'block';
         contactForm.reset();
         setTimeout(() => {
-          btn.textContent = 'Send Message';
+          btn.textContent = originalText;
           btn.disabled = false;
           if (successMsg) successMsg.style.display = 'none';
         }, 4000);
@@ -127,23 +155,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ========== Gallery Lightbox ==========
-  const galleryItems = document.querySelectorAll('.gallery-item');
-  galleryItems.forEach(item => {
+  document.querySelectorAll('.gallery-item').forEach(item => {
     item.addEventListener('click', () => {
-      // Simple lightbox effect
+      const label = item.dataset.label || 'Gallery';
       const overlay = document.createElement('div');
-      overlay.style.cssText = `
-        position:fixed;inset:0;background:rgba(0,0,0,0.95);z-index:9999;
-        display:flex;align-items:center;justify-content:center;cursor:pointer;
-        animation: fadeIn 0.3s ease;
-      `;
-      const label = item.dataset.label || 'Gallery Image';
-      overlay.innerHTML = `
-        <div style="text-align:center;padding:2rem;">
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:8rem;color:#e8ff00;line-height:1;margin-bottom:1rem;">${label}</div>
-          <div style="font-family:'Barlow Condensed',sans-serif;color:#888;letter-spacing:0.2em;text-transform:uppercase;font-size:0.8rem;">Click to close</div>
-        </div>
-      `;
+      overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.96);z-index:9999;display:flex;align-items:center;justify-content:center;cursor:pointer';
+      overlay.innerHTML = `<div style="text-align:center;padding:2rem;"><div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,12vw,8rem);color:#e8ff00;line-height:1;margin-bottom:1rem;">${label}</div><div style="font-family:'Barlow Condensed',sans-serif;color:#888;letter-spacing:0.2em;text-transform:uppercase;font-size:0.8rem;">Tap to close</div></div>`;
       document.body.appendChild(overlay);
       overlay.addEventListener('click', () => overlay.remove());
     });
@@ -152,145 +169,44 @@ document.addEventListener('DOMContentLoaded', () => {
   // ========== Smooth Page Transitions ==========
   document.querySelectorAll('a[href]').forEach(link => {
     const href = link.getAttribute('href');
-    if (!href.startsWith('#') && !href.startsWith('http') && !href.startsWith('mailto') && !href.startsWith('tel')) {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        document.body.style.opacity = '0';
-        document.body.style.transition = 'opacity 0.2s ease';
-        setTimeout(() => {
-          window.location.href = href;
-        }, 200);
-      });
-    }
+    if (!href || href.startsWith('#') || href.startsWith('http') ||
+        href.startsWith('mailto') || href.startsWith('tel') ||
+        href.startsWith('https') || link.hasAttribute('target')) return;
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      document.body.style.opacity = '0';
+      document.body.style.transition = 'opacity 0.2s ease';
+      setTimeout(() => { window.location.href = href; }, 200);
+    });
   });
 
   // Fade in on load
-  document.body.style.opacity = '0';
-  document.body.style.transition = 'opacity 0.4s ease';
   requestAnimationFrame(() => {
+    document.body.style.transition = 'opacity 0.4s ease';
     document.body.style.opacity = '1';
   });
 
-  // ========== Parallax Effect (Hero) ==========
-  const hero = document.querySelector('.hero');
-  if (hero) {
-    window.addEventListener('scroll', () => {
-      const scrollY = window.scrollY;
-      const heroBg = hero.querySelector('.hero-bg');
-      if (heroBg) {
-        heroBg.style.transform = `translateY(${scrollY * 0.3}px)`;
-      }
-    });
+  // ========== Parallax (desktop only) ==========
+  if (window.matchMedia('(min-width: 769px)').matches) {
+    const hero = document.querySelector('.hero');
+    if (hero) {
+      window.addEventListener('scroll', () => {
+        const heroBg = hero.querySelector('.hero-bg');
+        if (heroBg) heroBg.style.transform = `translateY(${window.scrollY * 0.3}px)`;
+      }, { passive: true });
+    }
   }
 
-  // ========== Pricing Toggle ==========
+  // ========== Pricing Billing Toggle ==========
   const billingToggle = document.getElementById('billingToggle');
   if (billingToggle) {
     billingToggle.addEventListener('change', () => {
-      const monthly = document.querySelectorAll('.price-monthly');
-      const annual = document.querySelectorAll('.price-annual');
+      const isAnnual = billingToggle.checked;
       const label = document.getElementById('billingLabel');
-
-      if (billingToggle.checked) {
-        monthly.forEach(el => el.style.display = 'none');
-        annual.forEach(el => el.style.display = 'flex');
-        if (label) label.textContent = 'Annual';
-      } else {
-        monthly.forEach(el => el.style.display = 'flex');
-        annual.forEach(el => el.style.display = 'none');
-        if (label) label.textContent = 'Monthly';
-      }
+      document.querySelectorAll('.price-monthly').forEach(el => el.style.display = isAnnual ? 'none' : 'flex');
+      document.querySelectorAll('.price-annual').forEach(el => el.style.display = isAnnual ? 'flex' : 'none');
+      if (label) label.textContent = isAnnual ? 'Annual' : 'Monthly';
     });
   }
 
 });
-
-// ========== Mobile UX Improvements ==========
-
-// Prevent address bar resize from triggering layout shifts on mobile
-let vh = window.innerHeight * 0.01;
-document.documentElement.style.setProperty('--vh', `${vh}px`);
-// Only update on orientation change, not scroll
-window.addEventListener('orientationchange', () => {
-  setTimeout(() => {
-    vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
-  }, 300);
-});
-
-// Close mobile nav on back button press
-window.addEventListener('popstate', () => {
-  const mobileNav = document.getElementById('mobileNav');
-  const navToggle = document.getElementById('navToggle');
-  if (mobileNav && mobileNav.classList.contains('open')) {
-    mobileNav.classList.remove('open');
-    navToggle && navToggle.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-});
-
-// Swipe to close mobile nav
-let touchStartX = 0;
-document.addEventListener('touchstart', (e) => {
-  touchStartX = e.touches[0].clientX;
-}, { passive: true });
-
-document.addEventListener('touchend', (e) => {
-  const mobileNav = document.getElementById('mobileNav');
-  const navToggle = document.getElementById('navToggle');
-  if (!mobileNav || !mobileNav.classList.contains('open')) return;
-  const diff = touchStartX - e.changedTouches[0].clientX;
-  if (diff > 60) { // swipe left to close
-    mobileNav.classList.remove('open');
-    navToggle && navToggle.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-}, { passive: true });
-
-// Detect touch device and add class for CSS hooks
-if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
-  document.documentElement.classList.add('is-touch');
-}
-
-// Fix: prevent double-tap zoom on buttons on iOS
-document.querySelectorAll('.btn, button').forEach(el => {
-  el.addEventListener('touchend', (e) => {
-    e.preventDefault();
-    el.click();
-  }, { passive: false });
-});
-
-// Lazy-load reveal: use requestAnimationFrame on mobile for smoother animations
-if (window.innerWidth < 768) {
-  document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
-    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-  });
-}
-
-// ========== Mobile UX Improvements ==========
-let vh = window.innerHeight * 0.01;
-document.documentElement.style.setProperty('--vh', `${vh}px`);
-window.addEventListener('orientationchange', () => {
-  setTimeout(() => {
-    vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
-  }, 300);
-});
-
-// Swipe to close mobile nav
-let touchStartX = 0;
-document.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
-document.addEventListener('touchend', (e) => {
-  const mobileNav = document.getElementById('mobileNav');
-  const navToggle = document.getElementById('navToggle');
-  if (!mobileNav || !mobileNav.classList.contains('open')) return;
-  if (touchStartX - e.changedTouches[0].clientX > 60) {
-    mobileNav.classList.remove('open');
-    navToggle && navToggle.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-}, { passive: true });
-
-if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
-  document.documentElement.classList.add('is-touch');
-}
