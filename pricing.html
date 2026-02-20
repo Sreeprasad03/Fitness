@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Pricing — BYSCORE FITNESS</title>
+  <meta name="description" content="BYSCORE FITNESS membership plans and pricing. Choose from Basic, Standard, and Elite memberships.">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .billing-toggle {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+      font-family: var(--font-condensed);
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+    .toggle-switch {
+      position: relative;
+      width: 52px;
+      height: 28px;
+      cursor: pointer;
+    }
+    .toggle-switch input { opacity: 0; width: 0; height: 0; }
+    .toggle-slider {
+      position: absolute;
+      inset: 0;
+      background: var(--border);
+      border-radius: 14px;
+      transition: background 0.3s;
+    }
+    .toggle-slider::before {
+      content: '';
+      position: absolute;
+      width: 20px; height: 20px;
+      left: 4px; bottom: 4px;
+      background: var(--white);
+      border-radius: 50%;
+      transition: transform 0.3s;
+    }
+    input:checked + .toggle-slider { background: var(--accent); }
+    input:checked + .toggle-slider::before { transform: translateX(24px); background: var(--black); }
+    .save-badge {
+      background: var(--red);
+      color: white;
+      font-size: 0.65rem;
+      font-family: var(--font-condensed);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.5rem;
+    }
+    .compare-table { width: 100%; border-collapse: collapse; margin-top: 3rem; }
+    .compare-table th {
+      font-family: var(--font-condensed);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 1rem 1.5rem;
+      text-align: left;
+      border-bottom: 2px solid var(--border);
+    }
+    .compare-table th:not(:first-child) { text-align: center; }
+    .compare-table th.featured-col { color: var(--accent); }
+    .compare-table td {
+      padding: 0.9rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      font-family: var(--font-condensed);
+      font-size: 0.95rem;
+      color: var(--light-gray);
+    }
+    .compare-table td:not(:first-child) { text-align: center; }
+    .compare-table tr:hover td { background: rgba(255,255,255,0.02); }
+    .compare-table .section-row td {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--panel);
+      padding: 0.6rem 1.5rem;
+    }
+    .check-yes { color: var(--accent); font-size: 1.2rem; }
+    .check-no { color: var(--gray); opacity: 0.4; font-size: 1.2rem; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 1.5rem 0;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-condensed);
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--white);
+      text-align: left;
+    }
+    .faq-icon { font-size: 1.5rem; color: var(--accent); transition: transform 0.3s; flex-shrink: 0; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    .faq-item.open .faq-answer { max-height: 300px; }
+    .faq-answer p { color: var(--gray); line-height: 1.8; padding-bottom: 1.5rem; font-size: 0.95rem; }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">BY<span>SCORE</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li>
+        <li><a href="programs.html">Programs</a></li><li><a href="trainers.html">Trainers</a></li>
+        <li><a href="pricing.html">Pricing</a></li><li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="contact.html" class="btn btn-primary nav-cta">Join Now</a>
+      <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a><a href="about.html">About</a><a href="programs.html">Programs</a>
+    <a href="trainers.html">Trainers</a><a href="pricing.html">Pricing</a><a href="gallery.html">Gallery</a><a href="contact.html">Contact</a>
+  </div>
+
+  <div class="page-header" data-title="PRICE">
+    <div class="container">
+      <div class="breadcrumb"><a href="index.html">Home</a><span class="sep">→</span><span class="current">Pricing</span></div>
+      <div class="tag">Membership</div>
+      <h1 class="section-title" style="font-size:clamp(4rem,10vw,9rem)">SIMPLE<br><span class="text-accent">PRICING</span></h1>
+    </div>
+  </div>
+
+  <!-- Pricing Cards -->
+  <section class="section-pad" style="background:var(--dark)">
+    <div class="container">
+      <p class="section-subtitle reveal">No hidden fees. No lock-in contracts. Cancel anytime. First session always free.</p>
+
+      <!-- Billing Toggle -->
+      <div class="billing-toggle reveal" style="margin-top:2.5rem;">
+        <span id="billingLabel">Monthly</span>
+        <label class="toggle-switch">
+          <input type="checkbox" id="billingToggle">
+          <span class="toggle-slider"></span>
+        </label>
+        <span>Annual <span class="save-badge">Save 20%</span></span>
+      </div>
+
+      <div class="pricing-grid">
+
+        <div class="price-card reveal">
+          <p class="price-plan">Basic</p>
+          <!-- Monthly Price -->
+          <div class="price-amount price-monthly">
+            <span class="price-currency">$</span>
+            <span class="price-num">39</span>
+            <span class="price-period">/mo</span>
+          </div>
+          <!-- Annual Price (hidden by default) -->
+          <div class="price-amount price-annual" style="display:none">
+            <span class="price-currency">$</span>
+            <span class="price-num">31</span>
+            <span class="price-period">/mo</span>
+          </div>
+          <div class="price-divider"></div>
+          <ul class="price-features">
+            <li class="price-feature"><span class="check">✓</span> Full gym floor access</li>
+            <li class="price-feature"><span class="check">✓</span> Locker room & showers</li>
+            <li class="price-feature"><span class="check">✓</span> 24/7 facility access</li>
+            <li class="price-feature"><span class="check">✓</span> Free fitness assessment</li>
+            <li class="price-feature disabled"><span class="cross">×</span> Group classes</li>
+            <li class="price-feature disabled"><span class="cross">×</span> Nutrition coaching</li>
+            <li class="price-feature disabled"><span class="cross">×</span> Personal training sessions</li>
+          </ul>
+          <a href="contact.html" class="btn btn-outline" style="width:100%;justify-content:center;">Get Started</a>
+        </div>
+
+        <div class="price-card featured reveal">
+          <div class="featured-badge">Most Popular</div>
+          <p class="price-plan">Standard</p>
+          <div class="price-amount price-monthly">
+            <span class="price-currency">$</span>
+            <span class="price-num">79</span>
+            <span class="price-period">/mo</span>
+          </div>
+          <div class="price-amount price-annual" style="display:none">
+            <span class="price-currency">$</span>
+            <span class="price-num">63</span>
+            <span class="price-period">/mo</span>
+          </div>
+          <div class="price-divider"></div>
+          <ul class="price-features">
+            <li class="price-feature"><span class="check">✓</span> Everything in Basic</li>
+            <li class="price-feature"><span class="check">✓</span> Unlimited group classes</li>
+            <li class="price-feature"><span class="check">✓</span> Monthly coach check-in</li>
+            <li class="price-feature"><span class="check">✓</span> Nutrition guidance</li>
+            <li class="price-feature"><span class="check">✓</span> App & progress tracking</li>
+            <li class="price-feature disabled"><span class="cross">×</span> Personal training sessions</li>
+            <li class="price-feature disabled"><span class="cross">×</span> Recovery center access</li>
+          </ul>
+          <a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center;">Get Started</a>
+        </div>
+
+        <div class="price-card reveal">
+          <p class="price-plan">Elite</p>
+          <div class="price-amount price-monthly">
+            <span class="price-currency">$</span>
+            <span class="price-num">149</span>
+            <span class="price-period">/mo</span>
+          </div>
+          <div class="price-amount price-annual" style="display:none">
+            <span class="price-currency">$</span>
+            <span class="price-num">119</span>
+            <span class="price-period">/mo</span>
+          </div>
+          <div class="price-divider"></div>
+          <ul class="price-features">
+            <li class="price-feature"><span class="check">✓</span> Everything in Standard</li>
+            <li class="price-feature"><span class="check">✓</span> 4 PT sessions/month</li>
+            <li class="price-feature"><span class="check">✓</span> Full nutrition coaching</li>
+            <li class="price-feature"><span class="check">✓</span> Recovery center access</li>
+            <li class="price-feature"><span class="check">✓</span> Priority class booking</li>
+            <li class="price-feature"><span class="check">✓</span> Guest passes (2/mo)</li>
+            <li class="price-feature"><span class="check">✓</span> Supplement discounts</li>
+          </ul>
+          <a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center;">Get Started</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Table -->
+  <section class="section-pad" style="background:var(--black)">
+    <div class="container">
+      <div class="tag reveal">Details</div>
+      <h2 class="section-title reveal">FULL <span class="text-accent">COMPARISON</span></h2>
+      <div style="overflow-x:auto;" class="reveal">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th style="min-width:200px;">Feature</th>
+              <th>Basic</th>
+              <th class="featured-col">Standard</th>
+              <th>Elite</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="section-row"><td colspan="4">Facility Access</td></tr>
+            <tr><td>Gym Floor Access</td><td><span class="check-yes">✓</span></td><td><span class="check-yes">✓</span></td><td><span class="check-yes">✓</span></td></tr>
+            <tr><td>24/7 Access</td><td><span class="check-yes">✓</span></td><td><span class="check-yes">✓</span></td><td><span class="check-yes">✓</span></td></tr>
+            <tr><td>Locker & Showers</td><td><span class="check-yes">✓</span></td><td><span class="check-yes">✓</span></td><td><span class="check-yes">✓</span></td></tr>
+            <tr><td>Recovery Center</td><td><span class="check-no">×</span></td><td><span class="check-no">×</span></td><td><span class="check-yes">✓</span></td></tr>
+            <tr class="section-row"><td colspan="4">Classes & Training</td></tr>
+            <tr><td>Group Classes</td><td><span class="check-no">×</span></td><td><span class="check-yes">✓</span></td><td><span class="check-yes">✓</span></td></tr>
+            <tr><td>Personal Training Sessions</td><td><span class="check-no">×</span></td><td><span class="check-no">×</span></td><td>4 / month</td></tr>
+            <tr><td>Fitness Assessment</td><td><span class="check-yes">✓</span></td><td><span class="check-yes">✓</span></td><td><span class="check-yes">✓</span></td></tr>
+            <tr><td>Coach Check-ins</td><td><span class="check-no">×</span></td><td>Monthly</td><td>Weekly</td></tr>
+            <tr class="section-row"><td colspan="4">Nutrition & Coaching</td></tr>
+            <tr><td>Nutrition Guidance</td><td><span class="check-no">×</span></td><td>Basic</td><td>Full Plan</td></tr>
+            <tr><td>Supplement Discount</td><td><span class="check-no">×</span></td><td>10%</td><td>20%</td></tr>
+            <tr class="section-row"><td colspan="4">Perks</td></tr>
+            <tr><td>App Access</td><td><span class="check-no">×</span></td><td><span class="check-yes">✓</span></td><td><span class="check-yes">✓</span></td></tr>
+            <tr><td>Priority Booking</td><td><span class="check-no">×</span></td><td><span class="check-no">×</span></td><td><span class="check-yes">✓</span></td></tr>
+            <tr><td>Guest Passes</td><td><span class="check-no">×</span></td><td><span class="check-no">×</span></td><td>2 / month</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section-pad" style="background:var(--darker)">
+    <div class="container">
+      <div class="tag reveal">Questions</div>
+      <h2 class="section-title reveal">FAQ</h2>
+
+      <div style="max-width:800px;margin-top:3rem;" class="reveal">
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Is there a contract or lock-in period?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer"><p>No contracts whatsoever. All memberships are month-to-month and you can cancel anytime with no cancellation fees. Annual memberships are paid upfront but you can request a prorated refund if needed.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            What's included in the free first session?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer"><p>Your free session includes a full facility tour, fitness assessment, body composition analysis, and 1-hour workout with a coach who will introduce you to our equipment and programming style. No commitment required.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Can I upgrade or downgrade my membership?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer"><p>Absolutely. You can change your membership tier at any time. Upgrades take effect immediately, downgrades take effect on your next billing date. Our team makes the process quick and hassle-free.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Do you offer student or family discounts?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer"><p>Yes! We offer 15% student discount with valid ID, and family memberships start from the 3rd family member. We also have corporate wellness partnerships. Contact us for details on all discount programs.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Are there day passes available?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer"><p>Yes. Day passes are available for $20/day at the front desk. Week passes are $75. These are great for traveling visitors or people who want to try the facility before committing to a membership.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-banner reveal">
+    <div class="container cta-inner">
+      <div class="cta-text"><h2 class="cta-title">FIRST SESSION<br>IS FREE</h2><p class="cta-sub">No credit card required. Come see what BYSCORE FITNESS is about.</p></div>
+      <div class="cta-actions"><a href="contact.html" class="btn btn-black">Claim Free Session</a></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><a href="index.html" class="nav-logo">BY<span>SCORE</span></a><p class="footer-desc">Palakkad's premier fitness destination.</p><div class="social-links"><a href="#" class="social-link">📸</a><a href="#" class="social-link">👥</a></div></div>
+        <div><h4 class="footer-col-title">Quick Links</h4><ul class="footer-links"><li><a href="about.html">About</a></li><li><a href="programs.html">Programs</a></li><li><a href="trainers.html">Trainers</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+        <div><h4 class="footer-col-title">Plans</h4><ul class="footer-links"><li><a href="pricing.html">Basic – $39/mo</a></li><li><a href="pricing.html">Standard – $79/mo</a></li><li><a href="pricing.html">Elite – $149/mo</a></li></ul></div>
+        <div><h4 class="footer-col-title">Hours</h4><div class="footer-hours"><div class="hour-row"><span class="day">Daily</span><span class="time">Open 24h</span></div></div></div>
+      </div>
+      <div class="footer-bottom"><p class="footer-copy">© 2025 BYSCORE FITNESS.</p><div class="footer-legal"><a href="#">Privacy</a><a href="#">Terms</a></div></div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+  </script>
+</body>
+</html>
