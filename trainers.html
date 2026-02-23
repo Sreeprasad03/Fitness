@@ -1,202 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Trainers — BYSCORE FITNESS</title>
-  <meta name="description" content="Meet BYSCORE FITNESS's team of expert coaches and personal trainers dedicated to your transformation.">
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trainers | Byscore Fitness Studio</title>
   <link rel="stylesheet" href="assets/css/style.css">
-  <style>
-    .trainer-full-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 4rem; }
-    .trainer-full-card { background: var(--dark); border: 1px solid var(--border); overflow: hidden; transition: border-color 0.3s; }
-    .trainer-full-card:hover { border-color: var(--accent); }
-    .trainer-full-img { width: 100%; aspect-ratio: 3/4; background: var(--panel); position: relative; overflow: hidden; }
-    .trainer-full-img-inner { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; transition: transform 0.5s; }
-    .trainer-full-card:hover .trainer-full-img-inner { transform: scale(1.05); }
-    .trainer-full-body { padding: 1.8rem; }
-    .trainer-full-name { font-family: var(--font-condensed); font-size: 1.5rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; }
-    .trainer-full-role { font-family: var(--font-condensed); font-size: 0.8rem; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin-top: 0.2rem; margin-bottom: 1rem; }
-    .trainer-full-bio { font-size: 0.9rem; color: var(--gray); line-height: 1.8; margin-bottom: 1.2rem; }
-    .trainer-certs { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.2rem; }
-    .cert-badge { font-family: var(--font-condensed); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.2rem 0.6rem; background: var(--border); color: var(--gray); }
-    .trainer-stats-row { display: flex; gap: 1.5rem; padding-top: 1.2rem; border-top: 1px solid var(--border); }
-    .t-stat-num { font-family: var(--font-display); font-size: 1.8rem; color: var(--accent); line-height: 1; }
-    .t-stat-label { font-family: var(--font-condensed); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); margin-top: 0.1rem; }
-    @media (max-width: 1024px) { .trainer-full-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 600px) { .trainer-full-grid { grid-template-columns: 1fr; } }
-  </style>
 </head>
 <body>
+<nav>
+  <a href="index.html" class="nav-logo">BYSCORE <span>FITNESS</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="programs.html">Programs</a></li>
+    <li><a href="trainers.html" class="active">Trainers</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="contact.html" class="nav-cta">Join Now</a></li>
+  </ul>
+  <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="page-hdr">
+  <div class="page-hdr-bg" style="background-image:url('assets/images/about-main.jpg');"></div>
+  <div class="page-hdr-content"><div class="page-hdr-label">Our Experts</div><h1 class="page-hdr-title">MEET THE <span style="color:var(--red)">TEAM</span></h1></div>
+</div>
 
-  <nav class="navbar" id="navbar">
-    <div class="container nav-inner">
-      <a href="index.html" class="nav-logo">BY<span>SCORE</span></a>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li>
+<div class="section section--dark">
+  <div class="container">
+    <div class="eyebrow reveal"><div class="eyebrow-line"></div><span class="eyebrow-text">Coaching Staff</span></div>
+    <h2 class="section-title reveal">EXPERT <span>COACHES</span></h2>
+    <p class="section-desc reveal">Our certified trainers bring years of experience, passion, and proven results. Your success is their mission.</p>
+    <div class="trainer-grid">
+      <div class="trainer-card reveal">
+        <img src="assets/images/trainer-1.jpg" alt="Head Trainer">
+        <div class="trainer-over">
+          <div class="trainer-name">Head Trainer</div>
+          <div class="trainer-role">Strength &amp; Conditioning Coach</div>
+          <p class="trainer-bio">Certified strength and conditioning specialist with expertise in weight training and progressive overload programming.</p>
+        </div>
+      </div>
+      <div class="trainer-card reveal">
+        <img src="assets/images/trainer-3.jpg" alt="Senior Coach">
+        <div class="trainer-over">
+          <div class="trainer-name">Senior Coach</div>
+          <div class="trainer-role">Functional Training &amp; CrossFit</div>
+          <p class="trainer-bio">Expert in functional movement and CrossFit. Specializes in building full-body strength, mobility, and sports performance.</p>
+        </div>
+      </div>
+    </div>
+    <div style="background:var(--dark3);border-left:3px solid var(--red);padding:1.5rem;margin-top:2.5rem;" class="reveal">
+      <div class="faq-q">JOIN OUR TEAM</div>
+      <p class="faq-a" style="margin-bottom:1.25rem;">Are you a certified fitness professional passionate about transforming lives? We're always looking for talented coaches to join the Byscore family.</p>
+      <a href="contact.html" class="btn-outline" style="width:auto;display:inline-flex;">Get In Touch</a>
+    </div>
+  </div>
+</div>
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="ft-logo">BYSCORE <span>FITNESS</span></div>
+      <p class="ft-desc">Your premier fitness destination in Palakkad. Elite coaching, real results.</p>
+      <div class="ft-soc">
+        <a href="https://wa.me/918848746337" target="_blank" class="soc-btn">WA</a>
+        <a href="mailto:sreeprasadsree03@gmail.com" class="soc-btn">@</a>
+        <a href="https://maps.app.goo.gl/NdrCjGcsgMtt5zP99" target="_blank" class="soc-btn">&#128205;</a>
+      </div>
+    </div>
+    <div>
+      <div class="ft-head">Quick Links</div>
+      <ul class="ft-list">
+        <li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li>
         <li><a href="programs.html">Programs</a></li><li><a href="trainers.html">Trainers</a></li>
-        <li><a href="pricing.html">Pricing</a></li><li><a href="gallery.html">Gallery</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="pricing.html">Pricing</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="contact.html">Contact</a></li>
       </ul>
-      <a href="contact.html" class="btn btn-primary nav-cta">Join Now</a>
-      <button type="button" class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
-  </nav>
-  <div class="mobile-nav" id="mobileNav">
-    <a href="index.html">Home</a><a href="about.html">About</a><a href="programs.html">Programs</a>
-    <a href="trainers.html">Trainers</a><a href="pricing.html">Pricing</a><a href="gallery.html">Gallery</a><a href="contact.html">Contact</a>
-  </div>
-
-  <div class="page-header" style="background-image:url(assets/images/hero-bg.jpg);background-size:cover;background-position:center 30%;" data-title="TEAM">
-    <div class="container">
-      <div class="breadcrumb"><a href="index.html">Home</a><span class="sep">→</span><span class="current">Trainers</span></div>
-      <div class="tag">Our Coaches</div>
-      <h1 class="section-title" style="font-size:clamp(4rem,10vw,9rem)">MEET THE<br><span class="text-accent">TEAM</span></h1>
+    <div>
+      <div class="ft-head">Programs</div>
+      <ul class="ft-list">
+        <li><a href="programs.html">Weight Training</a></li><li><a href="programs.html">Boxing</a></li>
+        <li><a href="programs.html">Functional Training</a></li><li><a href="programs.html">Personal Training</a></li>
+        <li><a href="programs.html">Diet Plan</a></li><li><a href="programs.html">Arm Wrestling Hub</a></li>
+      </ul>
     </div>
   </div>
+  <div class="ft-bottom"><span>&copy; 2025 Byscore Fitness Studio.</span><span>Palakkad, Kerala 678001</span></div>
+</footer>
+<script src="assets/js/main.js"></script>
 
-  <section class="section-pad" style="background:var(--dark)">
-    <div class="container">
-      <p class="section-subtitle reveal" style="max-width:700px;">Every BYSCORE FITNESS coach is hand-selected for their expertise, results, and genuine passion for helping people transform. Our team holds multiple certifications and brings diverse athletic backgrounds to every session.</p>
-
-      <div class="trainer-full-grid" data-stagger>
-
-        <div class="trainer-full-card reveal">
-          <div class="trainer-full-img">
-            <div class="trainer-full-img-inner" style="background:#111;"><img src="assets/images/trainer-1.jpg" alt="Marcus Steel" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block;"></div>
-          </div>
-          <div class="trainer-full-body">
-            <h3 class="trainer-full-name">Marcus Steel</h3>
-            <div class="trainer-full-role">Head Coach • Strength & Powerlifting</div>
-            <p class="trainer-full-bio">Founder of BYSCORE FITNESS and competitive powerlifter with 3 national championships. Marcus built the gym after 15 years in elite sport. His coaching philosophy centers on technical mastery, progressive loading, and building a resilient mindset.</p>
-            <div class="trainer-certs">
-              <span class="cert-badge">CSCS</span><span class="cert-badge">USAW-L2</span><span class="cert-badge">FMS</span><span class="cert-badge">Precision Nutrition</span>
-            </div>
-            <div class="trainer-stats-row">
-              <div><div class="t-stat-num">15+</div><div class="t-stat-label">Years Exp.</div></div>
-              <div><div class="t-stat-num">400+</div><div class="t-stat-label">Clients</div></div>
-              <div><div class="t-stat-num">3×</div><div class="t-stat-label">National Champ</div></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="trainer-full-card reveal">
-          <div class="trainer-full-img">
-            <div class="trainer-full-img-inner" style="background:#111;"><img src="assets/images/gym-battle-ropes-2.jpg" alt="Aria Voss" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block;"></div>
-          </div>
-          <div class="trainer-full-body">
-            <h3 class="trainer-full-name">Aria Voss</h3>
-            <div class="trainer-full-role">HIIT & Athletic Conditioning</div>
-            <p class="trainer-full-bio">Former professional sprinter and triathlete turned elite conditioning coach. Aria brings championship-level athletic programming to everyday members, making elite sports conditioning accessible to everyone regardless of starting fitness level.</p>
-            <div class="trainer-certs">
-              <span class="cert-badge">NASM-CPT</span><span class="cert-badge">HIIT Specialist</span><span class="cert-badge">TRX</span><span class="cert-badge">Sports Nutrition</span>
-            </div>
-            <div class="trainer-stats-row">
-              <div><div class="t-stat-num">10+</div><div class="t-stat-label">Years Exp.</div></div>
-              <div><div class="t-stat-num">280+</div><div class="t-stat-label">Clients</div></div>
-              <div><div class="t-stat-num">Pro</div><div class="t-stat-label">Athlete</div></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="trainer-full-card reveal">
-          <div class="trainer-full-img">
-            <div class="trainer-full-img-inner" style="background:#111;"><img src="assets/images/trainer-2.jpg" alt="Devon Cross" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block;"></div>
-          </div>
-          <div class="trainer-full-body">
-            <h3 class="trainer-full-name">Devon Cross</h3>
-            <div class="trainer-full-role">CrossFit & Nutrition Coach</div>
-            <p class="trainer-full-bio">CrossFit Level 3 trainer and certified sports nutritionist. Devon's holistic approach combines functional fitness with science-backed nutrition strategies. He has helped dozens of clients compete at CrossFit regionals and beyond.</p>
-            <div class="trainer-certs">
-              <span class="cert-badge">CF-L3</span><span class="cert-badge">Precision Nutrition L2</span><span class="cert-badge">NASM</span>
-            </div>
-            <div class="trainer-stats-row">
-              <div><div class="t-stat-num">8+</div><div class="t-stat-label">Years Exp.</div></div>
-              <div><div class="t-stat-num">200+</div><div class="t-stat-label">Clients</div></div>
-              <div><div class="t-stat-num">CF-L3</div><div class="t-stat-label">Certified</div></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="trainer-full-card reveal">
-          <div class="trainer-full-img">
-            <div class="trainer-full-img-inner" style="background:#111;"><img src="assets/images/gym-squat.jpg" alt="Zara Monk" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block;"></div>
-          </div>
-          <div class="trainer-full-body">
-            <h3 class="trainer-full-name">Zara Monk</h3>
-            <div class="trainer-full-role">Yoga, Mobility & Recovery</div>
-            <p class="trainer-full-bio">Certified yoga instructor and movement therapist with 12 years of experience. Zara specializes in helping high-performance athletes maintain longevity through targeted mobility work, injury prevention protocols, and restorative practices.</p>
-            <div class="trainer-certs">
-              <span class="cert-badge">RYT-500</span><span class="cert-badge">FRC</span><span class="cert-badge">SFMA</span><span class="cert-badge">Therapy</span>
-            </div>
-            <div class="trainer-stats-row">
-              <div><div class="t-stat-num">12+</div><div class="t-stat-label">Years Exp.</div></div>
-              <div><div class="t-stat-num">350+</div><div class="t-stat-label">Clients</div></div>
-              <div><div class="t-stat-num">RYT</div><div class="t-stat-label">500 Hours</div></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="trainer-full-card reveal">
-          <div class="trainer-full-img">
-            <div class="trainer-full-img-inner" style="background:#111;"><img src="assets/images/gym-battle-ropes.jpg" alt="Kai Torres" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block;"></div>
-          </div>
-          <div class="trainer-full-body">
-            <h3 class="trainer-full-name">Kai Torres</h3>
-            <div class="trainer-full-role">Boxing & Combat Fitness</div>
-            <p class="trainer-full-bio">Former amateur boxing champion with 8 years of professional combat sports coaching experience. Kai makes boxing techniques accessible and effective for fitness while maintaining authenticity to the sport's traditions and discipline.</p>
-            <div class="trainer-certs">
-              <span class="cert-badge">Boxing Coach</span><span class="cert-badge">NASM-CPT</span><span class="cert-badge">Kickboxing</span>
-            </div>
-            <div class="trainer-stats-row">
-              <div><div class="t-stat-num">8+</div><div class="t-stat-label">Years Exp.</div></div>
-              <div><div class="t-stat-num">180+</div><div class="t-stat-label">Clients</div></div>
-              <div><div class="t-stat-num">Champ</div><div class="t-stat-label">Amateur Title</div></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="trainer-full-card reveal">
-          <div class="trainer-full-img">
-            <div class="trainer-full-img-inner" style="background:#111;"><img src="assets/images/trainer-3.jpg" alt="Sam Reid" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block;"></div>
-          </div>
-          <div class="trainer-full-body">
-            <h3 class="trainer-full-name">Sam Reid</h3>
-            <div class="trainer-full-role">Personal Training & Body Comp</div>
-            <p class="trainer-full-bio">Specializes in physique transformation and body recomposition. Sam combines evidence-based resistance training with personalized nutrition planning to help members achieve dramatic transformations efficiently and sustainably.</p>
-            <div class="trainer-certs">
-              <span class="cert-badge">ACE-CPT</span><span class="cert-badge">Body Composition</span><span class="cert-badge">Nutrition Coach</span>
-            </div>
-            <div class="trainer-stats-row">
-              <div><div class="t-stat-num">6+</div><div class="t-stat-label">Years Exp.</div></div>
-              <div><div class="t-stat-num">150+</div><div class="t-stat-label">Clients</div></div>
-              <div><div class="t-stat-num">98%</div><div class="t-stat-label">Client Rate</div></div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <section class="cta-banner reveal">
-    <div class="container cta-inner">
-      <div class="cta-text"><h2 class="cta-title">TRAIN WITH<br>THE BEST</h2><p class="cta-sub">Book a free introductory session with any of our coaches.</p></div>
-      <div class="cta-actions"><a href="contact.html" class="btn btn-black">Book Intro Session</a><a href="pricing.html" class="btn btn-outline" style="border-color:rgba(0,0,0,0.3);color:#000;">See Pricing</a></div>
-    </div>
-  </section>
-
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand"><a href="index.html" class="nav-logo">BY<span>SCORE</span></a><p class="footer-desc">Palakkad's premier fitness destination.</p><div class="social-links"><a href="#" class="social-link">📸</a><a href="#" class="social-link">👥</a></div></div>
-        <div><h4 class="footer-col-title">Quick Links</h4><ul class="footer-links"><li><a href="about.html">About</a></li><li><a href="programs.html">Programs</a></li><li><a href="trainers.html">Trainers</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="contact.html">Contact</a></li></ul></div>
-        <div><h4 class="footer-col-title">Trainers</h4><ul class="footer-links"><li><a href="trainers.html">Marcus Steel</a></li><li><a href="trainers.html">Aria Voss</a></li><li><a href="trainers.html">Devon Cross</a></li><li><a href="trainers.html">Zara Monk</a></li></ul></div>
-        <div><h4 class="footer-col-title">Hours</h4><div class="footer-hours"><div class="hour-row"><span class="day">Daily</span><span class="time">Open 24h</span></div></div></div>
-      </div>
-      <div class="footer-bottom"><p class="footer-copy">© 2025 BYSCORE FITNESS.</p><div class="footer-legal"><a href="#">Privacy</a><a href="#">Terms</a></div></div>
-    </div>
-  </footer>
-
-  <script src="assets/js/main.js"></script>
-</body>
-</html>
+</body></html>

@@ -1,67 +1,42 @@
-IRONCLAD GYM — Website
-======================
+# Byscore Fitness Studio — Website
 
-A complete, production-ready multi-page gym website.
+## Overview
+Complete multi-page website for Byscore Fitness Studio, Palakkad, Kerala.
 
-AESTHETIC: Industrial Brutalist / Dark Power
-Colors: Black (#0a0a0a) + Acid Yellow (#e8ff00) + Dark panels
-Fonts: Bebas Neue (display) + Barlow Condensed (UI) + Barlow (body)
+## File Structure
+```
+gym-site/
+├── index.html          — Home page with hero, programs preview, pricing teaser, location CTA
+├── about.html          — About page with story, values, mission
+├── programs.html       — All 6 programs in detail
+├── trainers.html       — Coaching staff
+├── pricing.html        — Opening offer, schedule table, FAQs
+├── gallery.html        — Photo gallery grid
+├── contact.html        — Contact form, map, all links
+│
+└── assets/
+    ├── css/style.css   — Full styling (dark/gold luxury theme)
+    └── js/main.js      — Nav, scroll animations, counter animations
+```
 
-PAGES
------
-index.html       — Home: Hero, Programs preview, Trainers, Testimonials, CTA
-about.html       — About: Mission, Values, Timeline
-programs.html    — Programs: Full list + Weekly schedule
-trainers.html    — Trainers: 6 trainer profiles with stats
-pricing.html     — Pricing: 3 plans + comparison table + FAQ
-gallery.html     — Gallery: Masonry grid with filter tabs
-contact.html     — Contact: Form + info + map placeholder
+## Design
+- **Theme**: Dark luxury — black backgrounds, gold (#c9a84c) accents, blue depth
+- **Fonts**: Bebas Neue (headings), Rajdhani (UI), Montserrat (body)
+- **Features**: Scroll animations, parallax hero grid, counter animations, mobile responsive
 
-ASSETS
-------
-assets/css/style.css   — All styles (CSS variables, responsive, animations)
-assets/js/main.js      — Navbar scroll, reveal animations, counter, form, filters
-assets/images/         — Add your real images here
+## Contact Links
+- Maps: https://maps.app.goo.gl/NdrCjGcsgMtt5zP99
+- WhatsApp: https://api.whatsapp.com/send?text=...
+- Email: Gmail compose link
 
-HOW TO ADD IMAGES
------------------
-Replace the gradient placeholder divs with <img> tags:
-  <img src="assets/images/hero-bg.jpg" alt="Gym interior">
+## Gym Details
+- **Name**: Byscore Fitness Studio
+- **Address**: Maanu Complex, Vidyut Nagar, Ayyapuram, Palakkad, Kerala 678001
+- **Hours**: Mon–Sat 5:00–11:00 AM & 4:30–10:30 PM | Sunday Closed
+- **Pricing**: ₹10,000/year (Opening Offer, was ₹14,400) | No Admission Fee | Couple Offer Available
 
-Recommended images:
-  - hero-bg.jpg (wide landscape, gym floor)
-  - about-team.jpg (portrait, 4:5 ratio)
-  - trainer-[name].jpg (portrait, 3:4 ratio each)
-  - gallery-[1-12].jpg (various sizes)
-
-FEATURES
---------
-✓ Fixed navbar with scroll effect + mobile hamburger menu
-✓ Animated hero with stat counters
-✓ Scroll-reveal animations throughout
-✓ Running ticker/marquee banner
-✓ Programs grid with hover effects
-✓ Trainer cards with overlay reveal
-✓ Pricing toggle (monthly/annual)
-✓ Comparison table
-✓ FAQ accordion
-✓ Gallery filter (by category)
-✓ Contact form with validation
-✓ Smooth page transitions
-✓ Custom scrollbar + text selection
-✓ Fully responsive (mobile-first)
-✓ All pages share consistent header/footer
-
-CUSTOMIZATION
--------------
-1. Gym name: Find/replace "IRONCLAD" globally
-2. Colors: Edit --accent and --red in :root (style.css line ~14)
-3. Content: Edit text in each HTML file directly
-4. Prices: Update numbers in pricing.html
-5. Schedule: Update times/classes in programs.html
-
-DEPENDENCIES (CDN, no install needed)
---------------------------------------
-- Google Fonts: Bebas Neue, Barlow Condensed, Barlow
-
-© 2025 — Built with IRONCLAD precision.
+## To Customize
+1. Replace emoji icons in gallery/trainers with real photos
+2. Add real trainer names and bios
+3. Update the Google Maps embed src with the actual embed URL
+4. Connect the contact form to a backend or Formspree

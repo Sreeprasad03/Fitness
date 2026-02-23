@@ -1,291 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Contact — BYSCORE FITNESS</title>
-  <meta name="description" content="Get in touch with BYSCORE FITNESS. Book a free session, tour the facility, or ask us anything.">
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Byscore Fitness Studio</title>
   <link rel="stylesheet" href="assets/css/style.css">
-  <style>
-    .map-placeholder { border-radius: 0; 
-      width: 100%;
-      height: 300px;
-      background: var(--panel);
-      border: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 2rem;
-      position: relative;
-      overflow: hidden;
-    }
-    .map-placeholder::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(var(--border) 1px, transparent 1px),
-        linear-gradient(90deg, var(--border) 1px, transparent 1px);
-      background-size: 40px 40px;
-      opacity: 0.5;
-    }
-    .map-pin {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-    }
-    .map-pin-icon {
-      font-size: 3rem;
-      filter: drop-shadow(0 4px 20px var(--accent-glow));
-    }
-    .map-pin-label {
-      font-family: var(--font-condensed);
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-top: 0.5rem;
-      background: var(--dark);
-      padding: 0.3rem 0.8rem;
-      border: 1px solid var(--accent);
-    }
-    .social-contact {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-top: 1.5rem;
-    }
-    .social-contact-link {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--panel);
-      border: 1px solid var(--border);
-      padding: 0.7rem 1.2rem;
-      font-family: var(--font-condensed);
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--gray);
-      transition: all 0.2s;
-    }
-    .social-contact-link:hover { border-color: var(--accent); color: var(--accent); }
-  </style>
 </head>
 <body>
+<nav>
+  <a href="index.html" class="nav-logo">BYSCORE <span>FITNESS</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li>
+    <li><a href="programs.html">Programs</a></li><li><a href="trainers.html">Trainers</a></li>
+    <li><a href="pricing.html">Pricing</a></li><li><a href="gallery.html">Gallery</a></li>
+    <li><a href="contact.html" class="active nav-cta">Join Now</a></li>
+  </ul>
+  <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
 
-  <nav class="navbar" id="navbar">
-    <div class="container nav-inner">
-      <a href="index.html" class="nav-logo">BY<span>SCORE</span></a>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li>
-        <li><a href="programs.html">Programs</a></li><li><a href="trainers.html">Trainers</a></li>
-        <li><a href="pricing.html">Pricing</a></li><li><a href="gallery.html">Gallery</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-      <a href="contact.html" class="btn btn-primary nav-cta">Join Now</a>
-      <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
-    </div>
-  </nav>
-  <div class="mobile-nav" id="mobileNav">
-    <a href="index.html">Home</a><a href="about.html">About</a><a href="programs.html">Programs</a>
-    <a href="trainers.html">Trainers</a><a href="pricing.html">Pricing</a><a href="gallery.html">Gallery</a><a href="contact.html">Contact</a>
-  </div>
+<div class="page-hdr">
+  <div class="page-hdr-bg" style="background-image:url('assets/images/gym-rowing-class.jpg');"></div>
+  <div class="page-hdr-content"><div class="page-hdr-label">Get In Touch</div><h1 class="page-hdr-title">CONTACT <span style="color:var(--red)">US</span></h1></div>
+</div>
 
-  <div class="page-header" data-title="CONTACT">
-    <div class="container">
-      <div class="breadcrumb"><a href="index.html">Home</a><span class="sep">→</span><span class="current">Contact</span></div>
-      <div class="tag">Get In Touch</div>
-      <h1 class="section-title" style="font-size:clamp(4rem,10vw,9rem)">LET'S<br><span class="text-accent">TALK</span></h1>
-    </div>
-  </div>
+<!-- Toast -->
+<div class="toast" id="waToast"><div class="toast-title">&#128172; WhatsApp Opening...</div><div class="toast-msg">Your message is ready. We'll reply shortly!</div></div>
+<div class="toast email" id="emToast"><div class="toast-title">&#9993; Email Opening...</div><div class="toast-msg">Your enquiry is ready to send via Email!</div></div>
 
-  <!-- Contact Section -->
-  <section class="section-pad contact">
-    <div class="container">
-      <div class="contact-grid">
-
-        <!-- Info Column -->
-        <div>
-          <p class="section-subtitle reveal" style="margin-bottom:3rem;">Ready to start your transformation? Have questions? We're here. Reach out and we'll get back to you within the hour during staffed hours.</p>
-
-          <div class="contact-info-item reveal">
-            <div class="contact-icon">📍</div>
-            <div>
-              <div class="contact-detail-title">Address</div>
-              <div class="contact-detail-text">Maanu Complex, Vidyut Nagar, Ayyapuram<br>Palakkad, Kerala 678001</div>
-              <a href="https://maps.app.goo.gl/rQniZcwY8Yc2m5vy7" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.4rem;margin-top:0.6rem;font-family:var(--font-condensed);font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);padding:0.35rem 0.8rem;transition:all 0.2s;" onmouseover="this.style.background='var(--accent)';this.style.color='var(--black)'" onmouseout="this.style.background='transparent';this.style.color='var(--accent)'">📍 Get Directions →</a>
-            </div>
-          </div>
-
-          <div class="contact-info-item reveal">
-            <div class="contact-icon">📞</div>
-            <div>
-              <div class="contact-detail-title">Phone</div>
-              <div class="contact-detail-text"><a href="tel:+919876543210" style="color:var(--light-gray);transition:color 0.2s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--light-gray)'">+91 98765 43210</a></div>
-            </div>
-          </div>
-
-          <div class="contact-info-item reveal">
-            <div class="contact-icon">✉️</div>
-            <div>
-              <div class="contact-detail-title">Email</div>
-              <div class="contact-detail-text"><a href="/cdn-cgi/l/email-protection#1f777a7373705f766d70717c737e7b31786672" style="color:var(--light-gray);transition:color 0.2s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--light-gray)'"><span class="__cf_email__" data-cfemail="8de5e8e1e1e2cde4ffe2e3eee1ece9a3eaf4e0">[email&#160;protected]</span></a></div>
-            </div>
-          </div>
-
-          <div class="contact-info-item reveal">
-            <div class="contact-icon">🕐</div>
-            <div>
-              <div class="contact-detail-title">Hours</div>
-              <div class="contact-detail-text">
-                Facility: Open 24 hours, 7 days<br>
-                Staff: Mon-Fri 6am–10pm<br>
-                Staff: Weekends 8am–8pm
-              </div>
-            </div>
-          </div>
-
-          <div class="reveal">
-            <div class="contact-detail-title" style="margin-bottom:0.8rem;">Follow Us</div>
-            <div class="social-contact">
-              <a href="#" class="social-contact-link" target="_blank">📸 Instagram</a>
-              <a href="#" class="social-contact-link" target="_blank">👥 Facebook</a>
-              <a href="https://wa.me/919876543210" class="social-contact-link" target="_blank" rel="noopener">💬 WhatsApp</a>
-              <a href="tel:+919876543210" class="social-contact-link">📞 Call Now</a>
-            </div>
-          </div>
-
-          <!-- Map -->
-          <div class="map-placeholder reveal" style="padding:0;overflow:hidden;border:2px solid var(--accent);position:relative;">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.1!2d76.6548!3d10.7867!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTDCsDQ3JzEyLjEiTiA3NsKwMzknMTcuMyJF!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin&q=Maanu+Complex,+Vidyut+Nagar,+Ayyapuram,+Palakkad,+Kerala+678001"
-              width="100%" height="300"
-              style="border:0;display:block;filter:invert(90%) hue-rotate(180deg) saturate(1.2) brightness(0.85);"
-              allowfullscreen="" loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              title="BYSCORE FITNESS Location">
-            </iframe>
-            <a href="https://maps.app.goo.gl/rQniZcwY8Yc2m5vy7" target="_blank" rel="noopener" style="
-              position:absolute;bottom:0;right:0;
-              background:var(--accent);color:var(--black);
-              font-family:var(--font-condensed);font-size:0.7rem;font-weight:700;
-              letter-spacing:0.15em;text-transform:uppercase;
-              padding:0.4rem 0.9rem;
-              display:flex;align-items:center;gap:0.4rem;
-            ">📍 Open in Maps →</a>
-          </div>
+<div class="section section--dark">
+  <div class="container">
+    <div class="contact-wrap">
+      <!-- LEFT INFO -->
+      <div>
+        <div class="eyebrow reveal"><div class="eyebrow-line"></div><span class="eyebrow-text">Reach Out</span></div>
+        <h2 class="section-title reveal">LET'S <span>CONNECT</span></h2>
+        <p class="body-p reveal">Fill the form &amp; send directly to our <strong style="color:var(--green)">WhatsApp</strong> or <strong style="color:var(--red)">Email</strong> &mdash; we'll reply fast!</p>
+        <div class="ci-row reveal"><div class="ci-icon">&#128205;</div><div><div class="ci-label">Address</div><div class="ci-val">Maanu Complex, Vidyut Nagar<br>Ayyapuram, Palakkad, Kerala 678001</div></div></div>
+        <div class="ci-row reveal"><div class="ci-icon">&#8987;</div><div><div class="ci-label">Gym Hours</div><div class="ci-val">Mon &ndash; Sat: 5:00 AM &ndash; 11:00 AM<br>Mon &ndash; Sat: 4:30 PM &ndash; 10:30 PM<br>Sunday: Closed</div></div></div>
+        <div class="ci-row reveal"><div class="ci-icon">&#128172;</div><div><div class="ci-label">WhatsApp</div><div class="ci-val"><a href="https://wa.me/918848746337" target="_blank">+91 88487 46337</a></div></div></div>
+        <div class="ci-row reveal"><div class="ci-icon">&#9993;</div><div><div class="ci-label">Email</div><div class="ci-val"><a href="mailto:sreeprasadsree03@gmail.com">sreeprasadsree03@gmail.com</a></div></div></div>
+        <div class="quick-btns reveal">
+          <a href="https://maps.app.goo.gl/NdrCjGcsgMtt5zP99" target="_blank" class="q-btn">&#128205; Directions</a>
+          <a href="https://wa.me/918848746337" target="_blank" class="q-btn wa">&#128172; WhatsApp</a>
+          <a href="mailto:sreeprasadsree03@gmail.com" class="q-btn">&#9993; Email</a>
         </div>
+      </div>
 
-        <!-- Form Column -->
-        <div class="reveal">
-          <div class="tag" style="margin-bottom:2rem;">Send a Message</div>
-
-          <div id="formSuccess" class="form-success">
-            ✓ Message received! We'll be in touch within the hour.
-          </div>
-
-          <form class="contact-form" id="contactForm">
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label" for="firstName">First Name *</label>
-                <input type="text" id="firstName" class="form-control" placeholder="John" required>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="lastName">Last Name *</label>
-                <input type="text" id="lastName" class="form-control" placeholder="Doe" required>
-              </div>
+      <!-- RIGHT FORM -->
+      <div class="reveal">
+        <div class="form-box">
+          <div class="form-box-title">SEND AN ENQUIRY</div>
+          <div class="form-box-sub">Fill the form &amp; send via <strong style="color:var(--green)">WhatsApp</strong> or <strong style="color:var(--red)">Email</strong></div>
+          <form id="eForm">
+            <div class="f-row">
+              <div class="f-group"><label class="f-label">Full Name *</label><input type="text" id="fn" placeholder="Your name" required></div>
+              <div class="f-group"><label class="f-label">Phone Number</label><input type="tel" id="fp" placeholder="Your phone number"></div>
             </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label" for="email">Email *</label>
-                <input type="email" id="email" class="form-control" placeholder="yourname@gmail.com" required>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="phone">Phone</label>
-                <input type="tel" id="phone" class="form-control" placeholder="+1 (555) 000-0000">
-              </div>
+            <label class="f-label">Interested In</label>
+            <select id="fg">
+              <option value="">Select a program</option>
+              <option>Weight Training</option><option>Boxing</option>
+              <option>Functional Training</option><option>Personal Training</option>
+              <option>Diet Plan</option><option>Pro Arm Wrestling Hub</option>
+              <option>Annual Membership</option><option>Couple Offer</option>
+            </select>
+            <label class="f-label">Message</label>
+            <textarea id="fm" placeholder="Tell us about your fitness goals..."></textarea>
+            <div class="send-label">Choose how to send</div>
+            <div class="send-options">
+              <button type="button" class="wa-btn" onclick="sendWA()">&#128172; Send via WhatsApp</button>
+              <button type="button" class="em-btn" onclick="sendEM()">&#9993; Send via Email</button>
             </div>
-
-            <div class="form-group">
-              <label class="form-label" for="subject">I'm Interested In *</label>
-              <select id="subject" class="form-control" required>
-                <option value="" disabled selected>Select an option...</option>
-                <option value="free-session">Book a Free Session</option>
-                <option value="membership">Membership Information</option>
-                <option value="personal-training">Personal Training</option>
-                <option value="tour">Facility Tour</option>
-                <option value="classes">Group Classes</option>
-                <option value="pricing">Pricing Questions</option>
-                <option value="corporate">Corporate Wellness</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="goals">Your Fitness Goals</label>
-              <select id="goals" class="form-control">
-                <option value="" disabled selected>What are you working towards?</option>
-                <option value="fat-loss">Fat Loss & Body Composition</option>
-                <option value="muscle">Muscle Building</option>
-                <option value="strength">Strength & Power</option>
-                <option value="endurance">Endurance & Cardio</option>
-                <option value="general">General Fitness & Health</option>
-                <option value="sport">Sport Performance</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="message">Message *</label>
-              <textarea id="message" class="form-control" rows="5" placeholder="Tell us a bit about yourself and what you're looking for..." required></textarea>
-            </div>
-
-            <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
-              <button type="submit" class="btn btn-primary" style="flex:1;justify-content:center;min-width:200px;">Send Message →</button>
-              <p style="font-family:var(--font-condensed);font-size:0.75rem;color:var(--gray);letter-spacing:0.05em;flex:1;">We respond within 1 hour during staffed hours.</p>
-            </div>
+            <div class="or-line"><span>or</span></div>
+            <a href="https://maps.app.goo.gl/NdrCjGcsgMtt5zP99" target="_blank" class="btn-outline">&#128205; Visit Us at Palakkad</a>
           </form>
         </div>
-
+        <iframe class="map-frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3920!2d76.65!3d10.77!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba86e11f06e6d01%3A0x66451f0e94a7c02e!2sPalakkad%2C%20Kerala!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" allowfullscreen loading="lazy" title="Location"></iframe>
+        <div style="margin-top:1rem;"><a href="https://maps.app.goo.gl/NdrCjGcsgMtt5zP99" target="_blank" class="btn-red">Open Full Map</a></div>
       </div>
     </div>
-  </section>
+  </div>
+</div>
 
-  <!-- Free Session Banner -->
-  <section style="background:var(--darker);padding:5rem 0;border-top:1px solid var(--border);">
-    <div class="container">
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);" class="reveal">
-        <div style="background:var(--dark);padding:3rem 2rem;text-align:center;">
-          <div style="font-size:2.5rem;margin-bottom:1rem;">🎯</div>
-          <h3 style="font-family:var(--font-condensed);font-size:1.2rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem;">Free First Session</h3>
-          <p style="color:var(--gray);font-size:0.9rem;">No credit card. No obligation. Just come train with us.</p>
-        </div>
-        <div style="background:var(--dark);padding:3rem 2rem;text-align:center;">
-          <div style="font-size:2.5rem;margin-bottom:1rem;">🏆</div>
-          <h3 style="font-family:var(--font-condensed);font-size:1.2rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem;">Expert Coaching</h3>
-          <p style="color:var(--gray);font-size:0.9rem;">Meet your coach and get a personalized assessment.</p>
-        </div>
-        <div style="background:var(--dark);padding:3rem 2rem;text-align:center;">
-          <div style="font-size:2.5rem;margin-bottom:1rem;">📍</div>
-          <h3 style="font-family:var(--font-condensed);font-size:1.2rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem;">Full Facility Tour</h3>
-          <p style="color:var(--gray);font-size:0.9rem;">See every zone, every piece of equipment, every amenity.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<div class="cta-band">
+  <div class="cta-bg" style="background-image:url('assets/images/prog-strength.jpg');"></div>
+  <div class="cta-content">
+    <h2 class="cta-title">START YOUR <span>TRANSFORMATION</span></h2>
+    <p class="cta-desc">Annual membership from just &#8377;10,000. No admission fees. Couple offers available.</p>
+    <div class="cta-btns"><a href="pricing.html" class="btn-red">View Pricing</a></div>
+  </div>
+</div>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand"><a href="index.html" class="nav-logo">BY<span>SCORE</span></a><p class="footer-desc">Palakkad's premier fitness destination. Located in Ayyapuram, Palakkad, Kerala.</p><div class="social-links"><a href="#" class="social-link">📸</a><a href="#" class="social-link">👥</a><a href="https://wa.me/919876543210" class="social-link" target="_blank" rel="noopener">💬</a><a href="#" class="social-link">▶</a></div></div>
-        <div><h4 class="footer-col-title">Quick Links</h4><ul class="footer-links"><li><a href="about.html">About Us</a></li><li><a href="programs.html">Programs</a></li><li><a href="trainers.html">Trainers</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="contact.html">Contact</a></li></ul></div>
-        <div><h4 class="footer-col-title">Programs</h4><ul class="footer-links"><li><a href="programs.html">Strength & Power</a></li><li><a href="programs.html">HIIT Training</a></li><li><a href="programs.html">CrossFit</a></li><li><a href="programs.html">Boxing</a></li><li><a href="programs.html">Personal Training</a></li><li><a href="programs.html">Yoga & Recovery</a></li></ul></div>
-        <div><h4 class="footer-col-title">Hours</h4><div class="footer-hours"><div class="hour-row"><span class="day">Mon – Fri</span><span class="time">Open 24h</span></div><div class="hour-row"><span class="day">Saturday</span><span class="time">Open 24h</span></div><div class="hour-row"><span class="day">Sunday</span><span class="time">Open 24h</span></div><div style="margin-top:0.5rem;padding-top:0.8rem;border-top:1px solid var(--border);"><div class="hour-row"><span class="day">Staff Mon–Fri</span><span class="time">6am–10pm</span></div><div class="hour-row"><span class="day">Staff Wknd</span><span class="time">8am–8pm</span></div></div></div></div>
-      </div>
-      <div class="footer-bottom">
-        <p class="footer-copy">© 2025 BYSCORE FITNESS. All rights reserved.</p>
-        <div class="footer-legal"><a href="#">Privacy Policy</a><a 
+<footer>
+  <div class="footer-inner">
+    <div><div class="ft-logo">BYSCORE <span>FITNESS</span></div><p class="ft-desc">Your premier fitness destination in Palakkad.</p><div class="ft-soc"><a href="https://wa.me/918848746337" target="_blank" class="soc-btn">WA</a><a href="https://maps.app.goo.gl/NdrCjGcsgMtt5zP99" target="_blank" class="soc-btn">&#128205;</a></div></div>
+    <div><div class="ft-head">Quick Links</div><ul class="ft-list"><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="programs.html">Programs</a></li><li><a href="trainers.html">Trainers</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><div class="ft-head">Programs</div><ul class="ft-list"><li><a href="programs.html">Weight Training</a></li><li><a href="programs.html">Boxing</a></li><li><a href="programs.html">Functional Training</a></li><li><a href="programs.html">Personal Training</a></li><li><a href="programs.html">Diet Plan</a></li><li><a href="programs.html">Arm Wrestling Hub</a></li></ul></div>
+  </div>
+  <div class="ft-bottom"><span>&copy; 2025 Byscore Fitness Studio.</span><span>Palakkad, Kerala 678001</span></div>
+</footer>
+
+<script>
+  const WA = '918848746337';
+  const EM = 'sreeprasadsree03@gmail.com';
+  function getData() {
+    return {
+      name: document.getElementById('fn').value.trim(),
+      phone: document.getElementById('fp').value.trim(),
+      prog: document.getElementById('fg').value,
+      msg: document.getElementById('fm').value.trim()
+    };
+  }
+  function validate() {
+    const n = document.getElementById('fn');
+    if (!n.value.trim()) { n.style.borderColor='var(--red)'; n.focus(); setTimeout(()=>n.style.borderColor='',2000); return false; }
+    return true;
+  }
+  function toast(id) {
+    const t = document.getElementById(id);
+    t.classList.add('show');
+    setTimeout(()=>t.classList.remove('show'), 4000);
+  }
+  function sendWA() {
+    if (!validate()) return;
+    const d = getData();
+    let txt = '*New Enquiry — Byscore Fitness Studio*\n\n';
+    txt += `*Name:* ${d.name}\n`;
+    if (d.phone) txt += `*Phone:* ${d.phone}\n`;
+    if (d.prog) txt += `*Interested In:* ${d.prog}\n`;
+    if (d.msg) txt += `*Message:* ${d.msg}\n`;
+    txt += '\n_Sent from Byscore Fitness website_';
+    window.open(`https://wa.me/${WA}?text=${encodeURIComponent(txt)}`, '_blank');
+    toast('waToast');
+    document.getElementById('eForm').reset();
+  }
+  function sendEM() {
+    if (!validate()) return;
+    const d = getData();
+    const sub = `Enquiry from ${d.name} — Byscore Fitness Studio`;
+    let body = `New Enquiry from Website\n\nName: ${d.name}\n`;
+    if (d.phone) body += `Phone: ${d.phone}\n`;
+    if (d.prog) body += `Interested In: ${d.prog}\n`;
+    if (d.msg) body += `Message: ${d.msg}\n`;
+    body += '\nSent from Byscore Fitness website';
+    window.location.href = `mailto:${EM}?subject=${encodeURIComponent(sub)}&body=${encodeURIComponent(body)}`;
+    toast('emToast');
+    document.getElementById('eForm').reset();
+  }
+</script>
+<script src="assets/js/main.js"></script>
+</body></html>
